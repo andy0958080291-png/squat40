@@ -12,57 +12,399 @@
 <title>深蹲40下</title>
 
 <style>
-:root{--bg:#fffaf0;--card:#fff;--text:#263238;--muted:#7a858b;--yellow:#ffd83d;--orange:#ff9d35;--green:#35c979;--blue:#4b9cff;--red:#ff6673;--shadow:0 8px 28px rgba(38,50,56,.08)}
+:root{
+  --bg:#fffaf0;
+  --card:#fff;
+  --text:#263238;
+  --muted:#7a858b;
+  --yellow:#ffd83d;
+  --orange:#ff9d35;
+  --green:#35c979;
+  --blue:#4b9cff;
+  --red:#ff6673;
+  --shadow:0 8px 28px rgba(38,50,56,.08)
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,#fff7d6 0,#fffaf0 34%,#f7fbff 100%);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;color:var(--text);min-height:100vh}
-.app{max-width:520px;margin:auto;padding:env(safe-area-inset-top) 16px calc(88px + env(safe-area-inset-bottom))}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 4px 10px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:44px;height:44px;border-radius:14px;box-shadow:0 5px 14px #f0c94355}
-.brand h1{font-size:22px;margin:0;font-weight:900}
-.brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-.iconbtn{border:0;background:#fff;border-radius:14px;width:42px;height:42px;font-size:20px;box-shadow:var(--shadow)}
-.hero{background:#fff;border-radius:28px;padding:22px 18px;box-shadow:var(--shadow);text-align:center}
-.ring{width:220px;height:220px;margin:4px auto 14px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--p)*1%),#edf0f2 0);position:relative}
-.ring:after{content:"";position:absolute;inset:15px;background:#fff;border-radius:50%}
-.ringtext{position:relative;z-index:1}
-.ringtext strong{font-size:48px;line-height:1;font-weight:900}
-.ringtext span{display:block;color:var(--muted);font-weight:700;margin-top:6px}
-.encourage{font-weight:800;font-size:18px;margin:5px 0 16px}
-.sub{color:var(--muted);font-size:13px}
-.actions{display:flex;gap:10px}
-.btn{border:0;border-radius:16px;padding:14px 10px;font-size:17px;font-weight:900;flex:1}
-.plus1{background:#4b9cff;color:#fff}
-.plus5{background:#ff9d35;color:#fff}
-.start{width:100%;margin-top:10px;background:#ffd83d;color:#4b3b00}
-.section{margin-top:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{background:#fff;border-radius:20px;padding:15px;box-shadow:var(--shadow)}
-.stat b{font-size:25px}
-.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-.card{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow)}
-.row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #eef0f1}
-.row:last-child{border-bottom:0}
-.badge{background:#e8fff1;color:#1eaa61;border-radius:10px;padding:5px 8px;font-weight:800;font-size:12px}
-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);background:#ffffffee;backdrop-filter:blur(16px);display:flex;justify-content:space-around;padding:10px 8px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #eee;z-index:20}
-.navbtn{border:0;background:none;color:#8b9499;font-size:11px;font-weight:800;padding:6px 14px}
-.navbtn.active{color:#2e9b68}
-.navbtn div{font-size:21px;margin-bottom:2px}
-.page{display:none}
-.page.active{display:block}
-.modal{position:fixed;inset:0;background:#0006;display:none;align-items:end;z-index:30}
-.modal.show{display:flex}
-.sheet{background:#fff;width:100%;max-width:520px;margin:auto 0 0;border-radius:26px 26px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom))}
-.sheet h2{margin:0 0 16px}
-.field{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-.field input{width:90px;padding:10px;border:1px solid #ddd;border-radius:10px;font-size:16px;text-align:center}
-.close{width:100%;border:0;border-radius:15px;padding:13px;background:#eee;font-weight:800}
-.timer{font-size:80px;font-weight:900;text-align:center;margin:30px 0 5px}
-.countbig{text-align:center;font-size:24px;color:var(--muted)}
-.timerbtn{display:block;width:100%;border:0;border-radius:18px;padding:17px;background:#ffd83d;font-size:20px;font-weight:900;margin:18px 0 10px}
-.finish{background:#35c979;color:#fff}
-.reset{background:#f0f2f3}
-.notice{padding:12px 14px;background:#fff7d6;border-radius:14px;font-size:13px;color:#6f5b00;margin-top:12px}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,#fff7d6 0,#fffaf0 34%,#f7fbff 100%);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  color:var(--text);
+  min-height:100vh
+}
+
+.app{
+  max-width:520px;
+  margin:auto;
+  padding:env(safe-area-inset-top) 16px calc(88px + env(safe-area-inset-bottom))
+}
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 4px 10px
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  box-shadow:0 5px 14px #f0c94355
+}
+
+.brand h1{
+  font-size:22px;
+  margin:0;
+  font-weight:900
+}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px
+}
+
+.iconbtn{
+  border:0;
+  background:#fff;
+  border-radius:14px;
+  width:42px;
+  height:42px;
+  font-size:20px;
+  box-shadow:var(--shadow)
+}
+
+.hero{
+  background:#fff;
+  border-radius:28px;
+  padding:22px 18px;
+  box-shadow:var(--shadow);
+  text-align:center
+}
+
+.ring{
+  width:220px;
+  height:220px;
+  margin:4px auto 14px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:conic-gradient(var(--green) calc(var(--p)*1%),#edf0f2 0);
+  position:relative
+}
+
+.ring:after{
+  content:"";
+  position:absolute;
+  inset:15px;
+  background:#fff;
+  border-radius:50%
+}
+
+.ringtext{
+  position:relative;
+  z-index:1
+}
+
+.ringtext strong{
+  font-size:48px;
+  line-height:1;
+  font-weight:900
+}
+
+.ringtext span{
+  display:block;
+  color:var(--muted);
+  font-weight:700;
+  margin-top:6px
+}
+
+.encourage{
+  font-weight:800;
+  font-size:18px;
+  margin:5px 0 16px
+}
+
+.sub{
+  color:var(--muted);
+  font-size:13px
+}
+
+.actions{
+  display:flex;
+  gap:10px
+}
+
+.btn{
+  border:0;
+  border-radius:16px;
+  padding:14px 10px;
+  font-size:17px;
+  font-weight:900;
+  flex:1
+}
+
+.plus1{
+  background:#4b9cff;
+  color:#fff
+}
+
+.plus5{
+  background:#ff9d35;
+  color:#fff
+}
+
+.start{
+  width:100%;
+  margin-top:10px;
+  background:#ffd83d;
+  color:#4b3b00
+}
+
+.section{
+  margin-top:16px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.stat{
+  background:#fff;
+  border-radius:20px;
+  padding:15px;
+  box-shadow:var(--shadow)
+}
+
+.stat b{
+  font-size:25px
+}
+
+.stat span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px
+}
+
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--shadow)
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid #eef0f1
+}
+
+.row:last-child{
+  border-bottom:0
+}
+
+.badge{
+  background:#e8fff1;
+  color:#1eaa61;
+  border-radius:10px;
+  padding:5px 8px;
+  font-weight:800;
+  font-size:12px
+}
+
+nav{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:min(520px,100%);
+  background:#ffffffee;
+  backdrop-filter:blur(16px);
+  display:flex;
+  justify-content:space-around;
+  padding:10px 8px calc(10px + env(safe-area-inset-bottom));
+  border-top:1px solid #eee;
+  z-index:20
+}
+
+.navbtn{
+  border:0;
+  background:none;
+  color:#8b9499;
+  font-size:11px;
+  font-weight:800;
+  padding:6px 14px
+}
+
+.navbtn.active{
+  color:#2e9b68
+}
+
+.navbtn div{
+  font-size:21px;
+  margin-bottom:2px
+}
+
+.page{
+  display:none
+}
+
+.page.active{
+  display:block
+}
+
+.field{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 0
+}
+
+.field input{
+  width:120px;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px
+}
+
+.timer{
+  font-size:80px;
+  font-weight:900;
+  text-align:center;
+  margin:30px 0 5px
+}
+
+.countbig{
+  text-align:center;
+  font-size:24px;
+  color:var(--muted)
+}
+
+.timerbtn{
+  display:block;
+  width:100%;
+  border:0;
+  border-radius:18px;
+  padding:17px;
+  background:#ffd83d;
+  font-size:20px;
+  font-weight:900;
+  margin:18px 0 10px
+}
+
+.finish{
+  background:#35c979;
+  color:#fff
+}
+
+.reset{
+  background:#f0f2f3
+}
+
+.notice{
+  padding:12px 14px;
+  background:#fff7d6;
+  border-radius:14px;
+  font-size:13px;
+  color:#6f5b00;
+  margin-top:12px
+}
+
+.groupbox{
+  margin-top:16px;
+  background:#fff;
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--shadow)
+}
+
+.groupbox h3{
+  margin:0 0 12px;
+  font-size:18px
+}
+
+.groupfield{
+  display:flex;
+  gap:8px;
+  margin:8px 0
+}
+
+.groupfield input{
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px
+}
+
+.groupbtn{
+  border:0;
+  border-radius:12px;
+  padding:12px 14px;
+  font-weight:900;
+  background:#ffd83d;
+  color:#4b3b00
+}
+
+.groupbtn.blue{
+  background:#4b9cff;
+  color:#fff
+}
+
+.groupcode{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-align:center;
+  padding:10px;
+  background:#fff7d6;
+  border-radius:14px;
+  margin:10px 0
+}
+
+.friendrow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eef0f1
+}
+
+.friendrow:last-child{
+  border-bottom:0
+}
+
+.progressbar{
+  height:8px;
+  background:#edf0f2;
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:6px
+}
+
+.progressbar i{
+  display:block;
+  height:100%;
+  background:#35c979;
+  border-radius:99px
+}
 </style>
 </head>
 
@@ -71,721 +413,1719 @@ nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,
 <div class="app">
 
 <header>
-<div class="brand">
-<img class="logo" src="icons/icon-192.png" alt="胖馬鈴薯">
-<div>
-<h1>深蹲40下</h1>
-<small>每天40下，胖馬鈴薯陪你一起完成！🥔</small>
-</div>
-</div>
-<button class="iconbtn" onclick="openSettings()">⚙️</button>
+  <div class="brand">
+    <img class="logo" src="icons/icon-192.png" alt="胖馬鈴薯">
+    <div>
+      <h1>深蹲40下</h1>
+      <small>每天40下，胖馬鈴薯陪你一起完成！🥔</small>
+    </div>
+  </div>
+
+  <button class="iconbtn" onclick="openSettings()">⚙️</button>
 </header>
 
+
+<!-- 首頁 -->
 <section id="home" class="page active">
-<div class="hero">
 
-<div class="ring" id="ring">
-<div class="ringtext">
-<strong id="todayCount">0</strong>
-<span>/ <span id="goalText">40</span> 下</span>
-</div>
-</div>
+  <div class="hero">
 
-<div class="encourage" id="encourage">今天還沒開始，加油！💪</div>
-<div class="sub" id="dateText"></div>
+    <div class="ring" id="ring">
+      <div class="ringtext">
+        <strong id="todayCount">0</strong>
+        <span>/ <span id="goalText">40</span> 下</span>
+      </div>
+    </div>
 
-<div class="actions">
-<button class="btn plus1" onclick="add(1)">＋1</button>
-<button class="btn plus5" onclick="add(5)">＋5</button>
-</div>
+    <div class="encourage" id="encourage">
+      今天還沒開始，加油！💪
+    </div>
 
-<button class="btn start" onclick="showPage('workout')">▶ 開始深蹲</button>
+    <div class="sub" id="dateText"></div>
 
-</div>
+    <div class="actions">
+      <button class="btn plus1" onclick="add(1)">＋1</button>
+      <button class="btn plus5" onclick="add(5)">＋5</button>
+    </div>
 
-<div class="section grid">
-<div class="stat">
-<b id="streak">0</b>
-<span>🔥 連續天數</span>
-</div>
+    <button class="btn start" onclick="showPage('workout')">
+      ▶ 開始深蹲
+    </button>
 
-<div class="stat">
-<b id="monthDays">0</b>
-<span>📅 本月完成</span>
-</div>
-</div>
+  </div>
 
-<div class="section card">
-<b>最近紀錄</b>
-<div id="recent"></div>
-</div>
+
+  <div class="section grid">
+
+    <div class="stat">
+      <b id="streak">0</b>
+      <span>🔥 連續天數</span>
+    </div>
+
+    <div class="stat">
+      <b id="monthDays">0</b>
+      <span>📅 本月完成</span>
+    </div>
+
+  </div>
+
+
+  <!-- 朋友督促 -->
+  <div class="groupbox">
+
+    <h3>👥 一起督促</h3>
+
+    <div id="groupStatus">
+      <div class="sub">
+        尚未加入督促群組
+      </div>
+    </div>
+
+    <button
+      class="groupbtn"
+      style="width:100%;margin-top:10px"
+      onclick="showPage('settings')"
+    >
+      設定督促群組
+    </button>
+
+  </div>
+
+
+  <div class="section card">
+
+    <b>最近紀錄</b>
+
+    <div id="recent"></div>
+
+  </div>
 
 </section>
 
+
+<!-- 深蹲 -->
 <section id="workout" class="page">
 
-<div class="card" style="text-align:center">
+  <div class="card" style="text-align:center">
 
-<div class="sub">深蹲進行中</div>
+    <div class="sub">深蹲進行中</div>
 
-<div class="timer" id="workoutCount">0</div>
+    <div class="timer" id="workoutCount">
+      0
+    </div>
 
-<div class="countbig">
-/ <span id="workoutGoal">40</span> 下
-</div>
+    <div class="countbig">
+      / <span id="workoutGoal">40</span> 下
+    </div>
 
-<button class="timerbtn" onclick="workoutAdd()">
-完成 1 下 💪
-</button>
+    <button class="timerbtn" onclick="workoutAdd()">
+      完成 1 下 💪
+    </button>
 
-<button class="timerbtn finish" onclick="finishWorkout()">
-完成今天訓練 🎉
-</button>
+    <button class="timerbtn finish" onclick="finishWorkout()">
+      完成今天訓練 🎉
+    </button>
 
-<button class="timerbtn reset" onclick="showPage('home')">
-返回
-</button>
+    <button class="timerbtn reset" onclick="showPage('home')">
+      返回
+    </button>
 
-</div>
+  </div>
 
 </section>
 
+
+<!-- 紀錄 -->
 <section id="records" class="page">
 
-<div class="card">
+  <div class="card">
 
-<h2 style="margin-top:0">📖 深蹲紀錄</h2>
+    <h2 style="margin-top:0">
+      📖 深蹲紀錄
+    </h2>
 
-<div id="allRecords"></div>
+    <div id="allRecords"></div>
 
-</div>
+  </div>
 
 </section>
 
+
+<!-- 統計 -->
 <section id="stats" class="page">
 
-<div class="card">
+  <div class="card">
 
-<h2 style="margin-top:0">📊 統計</h2>
+    <h2 style="margin-top:0">
+      📊 統計
+    </h2>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="stat">
-<b id="totalCount">0</b>
-<span>累積深蹲</span>
-</div>
+      <div class="stat">
+        <b id="totalCount">0</b>
+        <span>累積深蹲</span>
+      </div>
 
-<div class="stat">
-<b id="bestStreak">0</b>
-<span>最長連續</span>
-</div>
+      <div class="stat">
+        <b id="bestStreak">0</b>
+        <span>最長連續</span>
+      </div>
 
-<div class="stat">
-<b id="avgCount">0</b>
-<span>平均每日</span>
-</div>
+      <div class="stat">
+        <b id="avgCount">0</b>
+        <span>平均每日</span>
+      </div>
 
-<div class="stat">
-<b id="completeRate">0%</b>
-<span>達標率</span>
-</div>
+      <div class="stat">
+        <b id="completeRate">0%</b>
+        <span>達標率</span>
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </section>
 
+
+<!-- 設定 -->
 <section id="settings" class="page">
 
-<div class="card">
+  <div class="card">
 
-<h2 style="margin-top:0">⚙️ 設定</h2>
+    <h2 style="margin-top:0">
+      ⚙️ 設定
+    </h2>
 
-<div class="field">
-<span>每日目標</span>
-<input id="goalInput" type="number" min="1" max="999" onchange="saveGoal()">
-</div>
 
-<div class="field">
-<span>每日提醒</span>
-<input id="timeInput" type="time" onchange="saveReminder()">
-</div>
+    <div class="field">
+      <span>每日目標</span>
+      <input
+        id="goalInput"
+        type="number"
+        min="1"
+        max="999"
+        onchange="saveGoal()"
+      >
+    </div>
 
-<button class="timerbtn" onclick="requestNotify()">
-🔔 開啟提醒通知
-</button>
 
-<div class="notice">
-提醒功能需先允許瀏覽器通知。iPhone 建議先把本 App「加入主畫面」。
-</div>
+    <div class="field">
+      <span>每日提醒</span>
+      <input
+        id="timeInput"
+        type="time"
+        onchange="saveReminder()"
+      >
+    </div>
 
-</div>
+
+    <button class="timerbtn" onclick="requestNotify()">
+      🔔 開啟提醒通知
+    </button>
+
+
+    <!-- 督促群組 -->
+    <div class="groupbox">
+
+      <h3>👥 朋友互相督促</h3>
+
+
+      <div class="field">
+
+        <span>我的暱稱</span>
+
+        <input
+          id="friendName"
+          type="text"
+          maxlength="20"
+          placeholder="例如：阿宗"
+        >
+
+      </div>
+
+
+      <div class="groupfield">
+
+        <input
+          id="groupCode"
+          type="text"
+          maxlength="12"
+          placeholder="群組代碼"
+        >
+
+        <button
+          class="groupbtn blue"
+          onclick="joinGroup()"
+        >
+          加入
+        </button>
+
+      </div>
+
+
+      <button
+        class="groupbtn"
+        style="width:100%;margin-top:4px"
+        onclick="createGroup()"
+      >
+        建立新群組
+      </button>
+
+
+      <div id="myGroupInfo"></div>
+
+
+      <div class="notice">
+        只要輸入相同群組代碼，就能互相看到今天完成幾下。
+      </div>
+
+    </div>
+
+
+    <div class="notice">
+      提醒功能需先允許瀏覽器通知。
+      iPhone 建議先把本 App「加入主畫面」。
+    </div>
+
+  </div>
 
 </section>
 
 </div>
 
+
+<!-- 底部選單 -->
 <nav>
 
-<button class="navbtn active" data-page="home" onclick="showPage('home')">
-<div>🏠</div>首頁
-</button>
+  <button
+    class="navbtn active"
+    data-page="home"
+    onclick="showPage('home')"
+  >
+    <div>🏠</div>
+    首頁
+  </button>
 
-<button class="navbtn" data-page="records" onclick="showPage('records')">
-<div>📖</div>紀錄
-</button>
 
-<button class="navbtn" data-page="stats" onclick="showPage('stats')">
-<div>📊</div>統計
-</button>
+  <button
+    class="navbtn"
+    data-page="records"
+    onclick="showPage('records')"
+  >
+    <div>📖</div>
+    紀錄
+  </button>
 
-<button class="navbtn" data-page="settings" onclick="showPage('settings')">
-<div>⚙️</div>設定
-</button>
+
+  <button
+    class="navbtn"
+    data-page="stats"
+    onclick="showPage('stats')"
+  >
+    <div>📊</div>
+    統計
+  </button>
+
+
+  <button
+    class="navbtn"
+    data-page="settings"
+    onclick="showPage('settings')"
+  >
+    <div>⚙️</div>
+    設定
+  </button>
 
 </nav>
 
 
-<!-- Firebase -->
+<!-- Firebase + App -->
 <script type="module">
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-getAuth,
-signInAnonymously
+  getAuth,
+  signInAnonymously
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-getFirestore
+  getFirestore,
+  doc,
+  setDoc,
+  collection,
+  onSnapshot,
+  serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+/* Firebase 設定 */
+
 const firebaseConfig = {
 
-apiKey: "AIzaSyCBTltVWgg-9kWJ9kTXZknK6UoTg0Cl12Y",
+  apiKey:
+    "AIzaSyCBTltVWgg-9kWJ9kTXZknK6UoTg0Cll2Y",
 
-authDomain: "squat40-c8224.firebaseapp.com",
+  authDomain:
+    "squat40-c8224.firebaseapp.com",
 
-projectId: "squat40-c8224",
+  projectId:
+    "squat40-c8224",
 
-storageBucket: "squat40-c8224.firebasestorage.app",
+  storageBucket:
+    "squat40-c8224.firebasestorage.app",
 
-messagingSenderId: "216837667050",
+  messagingSenderId:
+    "216837667050",
 
-appId: "1:216837667050:web:8acef74f7ebf9b9ff93"
+  appId:
+    "1:216837667050:web:8acef74f4ef7ebf9b9ff93"
 
 };
 
 
-const app = initializeApp(firebaseConfig);
+const firebaseApp =
+  initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const firebaseAuth =
+  getAuth(firebaseApp);
 
-const db = getFirestore(app);
-
-
-try {
-
-await signInAnonymously(auth);
-
-console.log(
-"Firebase 匿名登入成功：",
-auth.currentUser?.uid
-);
-
-window.firebaseAuth = auth;
-window.firebaseDB = db;
-
-} catch (error) {
-
-console.error(
-"Firebase 匿名登入失敗：",
-error
-);
-
-}
-
-</script>
+const firebaseDB =
+  getFirestore(firebaseApp);
 
 
-<script>
+/* Firebase 初始化 Promise */
 
-const KEY='squat40-v3';
+window.firebaseInit = (async function(){
 
-let data=JSON.parse(
-localStorage.getItem(KEY)||'null'
-)||{
-goal:40,
-records:{},
-reminder:'20:00'
-};
+  try{
 
-let workout=0;
+    await signInAnonymously(firebaseAuth);
 
+    window.firebaseReady = true;
+
+    window.firebaseUser =
+      firebaseAuth.currentUser;
+
+    console.log(
+      "Firebase 匿名登入成功"
+    );
+
+  }catch(error){
+
+    window.firebaseReady = false;
+
+    console.error(
+      "Firebase 匿名登入失敗",
+      error
+    );
+
+  }
+
+})();
+
+
+/* App */
+
+const KEY = 'squat40-v3';
+
+const PROFILE_KEY =
+  'squat40-profile-v1';
+
+
+let data =
+  JSON.parse(
+    localStorage.getItem(KEY) || 'null'
+  )
+  ||
+  {
+    goal:40,
+    records:{},
+    reminder:'20:00'
+  };
+
+
+let profile =
+  JSON.parse(
+    localStorage.getItem(PROFILE_KEY) || 'null'
+  )
+  ||
+  {
+    name:'',
+    group:''
+  };
+
+
+let workout = 0;
+
+let stopGroupListener = null;
+
+
+/* 日期 */
 
 function todayKey(){
 
-return new Date().toISOString().slice(0,10);
+  return new Date()
+    .toISOString()
+    .slice(0,10);
 
 }
 
 
 function fmt(k){
 
-let d=new Date(k+'T00:00:00');
+  let d =
+    new Date(k+'T00:00:00');
 
-return `${d.getMonth()+1}/${d.getDate()}（${'日一二三四五六'[d.getDay()]}）`;
+  return `${d.getMonth()+1}/${d.getDate()}（${'日一二三四五六'[d.getDay()]}）`;
 
 }
 
+
+/* Firebase 會員 ID */
+
+function getMemberId(){
+
+  let id =
+    localStorage.getItem(
+      'squat40-member-id'
+    );
+
+  if(!id){
+
+    id =
+      crypto.randomUUID
+      ? crypto.randomUUID()
+      : Date.now().toString(36)
+        +
+        Math.random()
+        .toString(36)
+        .slice(2);
+
+    localStorage.setItem(
+      'squat40-member-id',
+      id
+    );
+
+  }
+
+  return id;
+
+}
+
+
+/* 儲存 */
 
 function save(){
 
-localStorage.setItem(
-KEY,
-JSON.stringify(data)
-);
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(data)
+  );
 
-render();
+  render();
+
+  syncMyProgress();
 
 }
 
+
+/* 深蹲 */
 
 function add(n){
 
-let k=todayKey();
+  let k =
+    todayKey();
 
-data.records[k]=(data.records[k]||0)+n;
+  data.records[k] =
+    (data.records[k] || 0) + n;
 
-if(data.records[k]>999)
-data.records[k]=999;
+  if(data.records[k] > 999)
+    data.records[k] = 999;
 
-save();
+  save();
 
 }
 
+
+/* 頁面 */
 
 function showPage(id){
 
-document.querySelectorAll('.page')
-.forEach(x=>x.classList.remove('active'));
+  document
+    .querySelectorAll('.page')
+    .forEach(x =>
+      x.classList.remove('active')
+    );
 
-document.getElementById(id)
-.classList.add('active');
 
-document.querySelectorAll('.navbtn')
-.forEach(x=>
-x.classList.toggle(
-'active',
-x.dataset.page===id
-)
-);
+  document
+    .getElementById(id)
+    .classList.add('active');
 
-if(id==='workout'){
 
-workout=data.records[todayKey()]||0;
+  document
+    .querySelectorAll('.navbtn')
+    .forEach(x =>
+      x.classList.toggle(
+        'active',
+        x.dataset.page === id
+      )
+    );
 
-document.getElementById(
-'workoutCount'
-).textContent=workout;
 
-document.getElementById(
-'workoutGoal'
-).textContent=data.goal;
+  if(id === 'workout'){
+
+    workout =
+      data.records[todayKey()] || 0;
+
+    document.getElementById(
+      'workoutCount'
+    ).textContent = workout;
+
+    document.getElementById(
+      'workoutGoal'
+    ).textContent = data.goal;
+
+  }
+
+
+  if(id === 'settings'){
+
+    renderGroupSettings();
+
+  }
 
 }
 
-}
 
+/* 深蹲模式 */
 
 function workoutAdd(){
 
-workout++;
+  workout++;
 
-data.records[todayKey()]=workout;
+  data.records[todayKey()] =
+    workout;
 
-save();
+  save();
 
-document.getElementById(
-'workoutCount'
-).textContent=workout;
+  document.getElementById(
+    'workoutCount'
+  ).textContent = workout;
 
-if(navigator.vibrate)
-navigator.vibrate(25);
+  if(navigator.vibrate)
+    navigator.vibrate(25);
 
 }
 
 
 function finishWorkout(){
 
-if(workout<data.goal){
+  if(workout < data.goal){
 
-if(!confirm(
-`目前 ${workout} 下，還差 ${data.goal-workout} 下。確定要結束嗎？`
-))
-return;
+    if(!confirm(
+      `目前 ${workout} 下，還差 ${data.goal-workout} 下。確定要結束嗎？`
+    ))
+      return;
+
+  }
+
+
+  data.records[todayKey()] =
+    workout;
+
+  save();
+
+
+  alert(
+    workout >= data.goal
+      ? '🎉 今天完成40下！'
+      : '已保存今天的訓練！'
+  );
+
+
+  showPage('home');
 
 }
 
-data.records[todayKey()]=workout;
 
-save();
-
-alert(
-workout>=data.goal
-?'🎉 今天完成40下！'
-:'已保存今天的訓練！'
-);
-
-showPage('home');
-
-}
-
+/* 連續天數 */
 
 function streak(){
 
-let s=0;
+  let s = 0;
 
-let d=new Date();
+  let d = new Date();
 
-while(true){
 
-let k=d.toISOString().slice(0,10);
+  while(true){
 
-if((data.records[k]||0)>=data.goal){
+    let k =
+      d.toISOString().slice(0,10);
 
-s++;
 
-d.setDate(
-d.getDate()-1
-);
+    if(
+      (data.records[k] || 0)
+      >= data.goal
+    ){
 
-}else{
+      s++;
 
-break;
+      d.setDate(
+        d.getDate()-1
+      );
+
+    }else{
+
+      break;
+
+    }
+
+  }
+
+  return s;
 
 }
 
-}
 
-return s;
-
-}
-
+/* 本月 */
 
 function monthDone(){
 
-let now=new Date();
+  let now = new Date();
 
-let m=now.getMonth();
+  let m = now.getMonth();
 
-let y=now.getFullYear();
+  let y = now.getFullYear();
 
-return Object.entries(data.records)
-.filter(([k,v])=>{
 
-let d=new Date(k+'T00:00:00');
+  return Object.entries(
+    data.records
+  )
+  .filter(([k,v]) => {
 
-return
-d.getFullYear()===y &&
-d.getMonth()===m &&
-v>=data.goal;
+    let d =
+      new Date(k+'T00:00:00');
 
-}).length;
+    return (
+      d.getFullYear() === y &&
+      d.getMonth() === m &&
+      v >= data.goal
+    );
+
+  }).length;
 
 }
 
+
+/* 畫面更新 */
 
 function render(){
 
-let k=todayKey();
+  let k =
+    todayKey();
 
-let c=data.records[k]||0;
+  let c =
+    data.records[k] || 0;
 
-let g=data.goal;
+  let g =
+    data.goal;
 
-let p=Math.min(
-100,
-c/g*100
-);
-
-
-document.getElementById(
-'todayCount'
-).textContent=c;
-
-
-document.getElementById(
-'goalText'
-).textContent=g;
+  let p =
+    Math.min(
+      100,
+      c / g * 100
+    );
 
 
-document.getElementById(
-'ring'
-).style.setProperty(
-'--p',
-p
-);
+  document.getElementById(
+    'todayCount'
+  ).textContent = c;
 
 
-document.getElementById(
-'streak'
-).textContent=streak();
+  document.getElementById(
+    'goalText'
+  ).textContent = g;
 
 
-document.getElementById(
-'monthDays'
-).textContent=monthDone();
+  document.getElementById(
+    'ring'
+  ).style.setProperty(
+    '--p',
+    p
+  );
 
 
-document.getElementById(
-'goalInput'
-).value=g;
+  document.getElementById(
+    'streak'
+  ).textContent = streak();
 
 
-document.getElementById(
-'timeInput'
-).value=data.reminder;
+  document.getElementById(
+    'monthDays'
+  ).textContent = monthDone();
 
 
-document.getElementById(
-'dateText'
-).textContent=
-new Date().toLocaleDateString(
-'zh-TW',
-{
-year:'numeric',
-month:'long',
-day:'numeric',
-weekday:'long'
+  document.getElementById(
+    'goalInput'
+  ).value = g;
+
+
+  document.getElementById(
+    'timeInput'
+  ).value = data.reminder;
+
+
+  document.getElementById(
+    'dateText'
+  ).textContent =
+    new Date().toLocaleDateString(
+      'zh-TW',
+      {
+        year:'numeric',
+        month:'long',
+        day:'numeric',
+        weekday:'long'
+      }
+    );
+
+
+  document.getElementById(
+    'encourage'
+  ).textContent =
+    c >= g
+      ? '🎉 今日達標！太棒了！'
+      : c
+        ? `再 ${g-c} 下，加油！💪`
+        : '今天還沒開始，加油！💪';
+
+
+  let keys =
+    Object.keys(
+      data.records
+    )
+    .sort()
+    .reverse();
+
+
+  document.getElementById(
+    'recent'
+  ).innerHTML =
+    keys
+      .slice(0,5)
+      .map(k =>
+        `<div class="row">
+          <span>${fmt(k)}</span>
+          <b>
+            ${data.records[k]} 下
+            ${
+              data.records[k] >= g
+                ? '<span class="badge">達標</span>'
+                : ''
+            }
+          </b>
+        </div>`
+      )
+      .join('')
+      ||
+      '<div class="sub" style="padding:15px 0">還沒有紀錄</div>';
+
+
+  document.getElementById(
+    'allRecords'
+  ).innerHTML =
+    keys
+      .map(k =>
+        `<div class="row">
+          <span>${fmt(k)}</span>
+          <b>
+            ${data.records[k]} 下
+            ${
+              data.records[k] >= g
+                ? '<span class="badge">✓</span>'
+                : ''
+            }
+          </b>
+        </div>`
+      )
+      .join('')
+      ||
+      '<div class="sub">還沒有紀錄</div>';
+
+
+  let vals =
+    Object.values(data.records);
+
+  let total =
+    vals.reduce(
+      (a,b) => a+b,
+      0
+    );
+
+  let days =
+    vals.length;
+
+  let done =
+    vals.filter(
+      v => v >= g
+    ).length;
+
+
+  document.getElementById(
+    'totalCount'
+  ).textContent = total;
+
+
+  document.getElementById(
+    'bestStreak'
+  ).textContent =
+    bestStreak();
+
+
+  document.getElementById(
+    'avgCount'
+  ).textContent =
+    days
+      ? Math.round(total/days)
+      : 0;
+
+
+  document.getElementById(
+    'completeRate'
+  ).textContent =
+    days
+      ? Math.round(done/days*100)+'%'
+      : '0%';
+
 }
-);
 
 
-document.getElementById(
-'encourage'
-).textContent=
-c>=g
-?'🎉 今日達標！太棒了！'
-:c
-?`再 ${g-c} 下，加油！💪`
-:'今天還沒開始，加油！💪';
-
-
-let keys=
-Object.keys(data.records)
-.sort()
-.reverse();
-
-
-document.getElementById(
-'recent'
-).innerHTML=
-keys.slice(0,5)
-.map(k=>
-`<div class="row">
-<span>${fmt(k)}</span>
-<b>
-${data.records[k]} 下
-${data.records[k]>=g
-?'<span class="badge">達標</span>'
-:''
-}
-</b>
-</div>`
-)
-.join('')
-||
-'<div class="sub" style="padding:15px 0">還沒有紀錄</div>';
-
-
-document.getElementById(
-'allRecords'
-).innerHTML=
-keys.map(k=>
-`<div class="row">
-<span>${fmt(k)}</span>
-<b>
-${data.records[k]} 下
-${data.records[k]>=g
-?'<span class="badge">✓</span>'
-:''
-}
-</b>
-</div>`
-)
-.join('')
-||
-'<div class="sub">還沒有紀錄</div>';
-
-
-let vals=Object.values(data.records);
-
-let total=
-vals.reduce((a,b)=>a+b,0);
-
-let days=vals.length;
-
-let done=
-vals.filter(v=>v>=g).length;
-
-
-document.getElementById(
-'totalCount'
-).textContent=total;
-
-
-document.getElementById(
-'bestStreak'
-).textContent=bestStreak();
-
-
-document.getElementById(
-'avgCount'
-).textContent=
-days
-?Math.round(total/days)
-:0;
-
-
-document.getElementById(
-'completeRate'
-).textContent=
-days
-?Math.round(done/days*100)+'%'
-:'0%';
-
-}
-
+/* 最長連續 */
 
 function bestStreak(){
 
-let ks=
-Object.keys(data.records)
-.sort();
+  let ks =
+    Object.keys(
+      data.records
+    ).sort();
 
-let best=0;
+  let best = 0;
 
-let cur=0;
+  let cur = 0;
 
-let prev=null;
+  let prev = null;
 
 
-for(let k of ks){
+  for(let k of ks){
 
-let d=
-new Date(k+'T00:00:00');
+    let d =
+      new Date(k+'T00:00:00');
 
-if(prev){
 
-let diff=
-(d-prev)/86400000;
+    if(prev){
 
-if(diff!==1)
-cur=0;
+      let diff =
+        (d-prev)/86400000;
+
+      if(diff !== 1)
+        cur = 0;
+
+    }
+
+
+    if(
+      (data.records[k] || 0)
+      >= data.goal
+    ){
+
+      cur++;
+
+      best =
+        Math.max(
+          best,
+          cur
+        );
+
+    }
+
+
+    prev = d;
+
+  }
+
+
+  return best;
 
 }
 
-if(
-(data.records[k]||0)>=data.goal
-){
 
-cur++;
-
-best=Math.max(
-best,
-cur
-);
-
-}
-
-prev=d;
-
-}
-
-return best;
-
-}
-
+/* 設定 */
 
 function saveGoal(){
 
-let v=Math.max(
-1,
-Math.min(
-999,
-Number(
-document.getElementById(
-'goalInput'
-).value
-)||40
-)
-);
+  let v =
+    Math.max(
+      1,
+      Math.min(
+        999,
+        Number(
+          document.getElementById(
+            'goalInput'
+          ).value
+        ) || 40
+      )
+    );
 
-data.goal=v;
 
-save();
+  data.goal = v;
+
+  save();
 
 }
 
 
 function saveReminder(){
 
-data.reminder=
-document.getElementById(
-'timeInput'
-).value
-||'20:00';
+  data.reminder =
+    document.getElementById(
+      'timeInput'
+    ).value || '20:00';
 
-save();
+  save();
 
 }
 
 
 function openSettings(){
 
-showPage('settings');
+  showPage('settings');
 
 }
 
 
 async function requestNotify(){
 
-if(!('Notification'in window)){
+  if(!('Notification' in window)){
 
-alert(
-'此瀏覽器不支援通知。'
-);
+    alert(
+      '此瀏覽器不支援通知。'
+    );
 
-return;
+    return;
+
+  }
+
+
+  let p =
+    await Notification.requestPermission();
+
+
+  alert(
+    p === 'granted'
+      ? '🔔 已開啟通知權限！'
+      : '目前未允許通知。'
+  );
 
 }
 
-let p=
-await Notification.requestPermission();
 
-alert(
-p==='granted'
-?'🔔 已開啟通知權限！'
-:'目前未允許通知。'
-);
+/* =========================
+   朋友督促
+========================= */
+
+
+/* HTML 安全 */
+
+function escapeHtml(text){
+
+  return String(text)
+    .replace(
+      /[&<>"']/g,
+      m => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[m])
+    );
 
 }
 
 
-if('serviceWorker'in navigator)
+/* 儲存朋友設定 */
 
-navigator.serviceWorker
-.register('sw.js')
-.catch(()=>{});
+function saveProfile(){
+
+  profile.name =
+    (
+      document.getElementById(
+        'friendName'
+      ).value || ''
+    )
+    .trim()
+    .slice(0,20);
 
 
-render();
+  profile.group =
+    (
+      document.getElementById(
+        'groupCode'
+      ).value || ''
+    )
+    .trim()
+    .toUpperCase()
+    .replace(
+      /[^A-Z0-9_-]/g,
+      ''
+    )
+    .slice(0,12);
+
+
+  localStorage.setItem(
+    PROFILE_KEY,
+    JSON.stringify(profile)
+  );
+
+}
+
+
+/* 產生群組代碼 */
+
+function randomGroupCode(){
+
+  const chars =
+    'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+  let code = '';
+
+  for(let i=0;i<6;i++){
+
+    code +=
+      chars[
+        Math.floor(
+          Math.random()*chars.length
+        )
+      ];
+
+  }
+
+  return code;
+
+}
+
+
+/* 建立群組 */
+
+async function createGroup(){
+
+  if(!window.firebaseInit){
+
+    alert(
+      'Firebase 尚未初始化。'
+    );
+
+    return;
+
+  }
+
+
+  await window.firebaseInit;
+
+
+  if(!window.firebaseReady){
+
+    alert(
+      'Firebase 連線失敗，請稍後再試。'
+    );
+
+    return;
+
+  }
+
+
+  let name =
+    (
+      document.getElementById(
+        'friendName'
+      ).value || ''
+    ).trim();
+
+
+  if(!name)
+    name = '匿名朋友';
+
+
+  let code =
+    randomGroupCode();
+
+
+  document.getElementById(
+    'friendName'
+  ).value = name;
+
+
+  document.getElementById(
+    'groupCode'
+  ).value = code;
+
+
+  saveProfile();
+
+
+  try{
+
+    const groupRef =
+      doc(
+        firebaseDB,
+        'squatGroups',
+        profile.group
+      );
+
+
+    await setDoc(
+      groupRef,
+      {
+        createdAt:
+          serverTimestamp()
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    await syncMyProgress();
+
+
+    renderGroupSettings();
+
+
+    alert(
+      '🎉 群組建立成功！\n\n' +
+      '群組代碼：' +
+      profile.group +
+      '\n\n' +
+      '把這個代碼給朋友，朋友輸入後就可以加入。'
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      '建立群組失敗：\n' +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* 加入群組 */
+
+async function joinGroup(){
+
+  if(!window.firebaseInit){
+
+    alert(
+      'Firebase 尚未初始化。'
+    );
+
+    return;
+
+  }
+
+
+  await window.firebaseInit;
+
+
+  if(!window.firebaseReady){
+
+    alert(
+      'Firebase 連線失敗。'
+    );
+
+    return;
+
+  }
+
+
+  saveProfile();
+
+
+  if(!profile.group){
+
+    alert(
+      '請輸入群組代碼。'
+    );
+
+    return;
+
+  }
+
+
+  if(!profile.name){
+
+    profile.name =
+      '匿名朋友';
+
+    localStorage.setItem(
+      PROFILE_KEY,
+      JSON.stringify(profile)
+    );
+
+  }
+
+
+  try{
+
+    const groupRef =
+      doc(
+        firebaseDB,
+        'squatGroups',
+        profile.group
+      );
+
+
+    await setDoc(
+      groupRef,
+      {
+        updatedAt:
+          serverTimestamp()
+      },
+      {
+        merge:true
+      }
+    );
+
+
+    await syncMyProgress();
+
+    startGroupListener();
+
+    renderGroupSettings();
+
+    alert(
+      '✅ 已加入群組：' +
+      profile.group
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      '加入群組失敗：\n' +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* 同步自己的進度 */
+
+async function syncMyProgress(){
+
+  if(!window.firebaseInit)
+    return;
+
+
+  await window.firebaseInit;
+
+
+  if(
+    !window.firebaseReady ||
+    !profile.group ||
+    !window.firebaseUser
+  )
+    return;
+
+
+  try{
+
+    const memberRef =
+      doc(
+        firebaseDB,
+        'squatGroups',
+        profile.group,
+        'members',
+        getMemberId()
+      );
+
+
+    await setDoc(
+      memberRef,
+      {
+        name:
+          profile.name || '匿名朋友',
+
+        todayCount:
+          Number(
+            data.records[todayKey()] || 0
+          ),
+
+        goal:
+          Number(data.goal || 40),
+
+        updatedAt:
+          serverTimestamp()
+      },
+      {
+        merge:true
+      }
+    );
+
+
+  }catch(error){
+
+    console.error(
+      '同步朋友進度失敗：',
+      error
+    );
+
+  }
+
+}
+
+
+/* 開始監聽朋友 */
+
+async function startGroupListener(){
+
+  if(stopGroupListener){
+
+    stopGroupListener();
+
+    stopGroupListener = null;
+
+  }
+
+
+  if(!window.firebaseInit)
+    return;
+
+
+  await window.firebaseInit;
+
+
+  if(
+    !window.firebaseReady ||
+    !profile.group
+  )
+    return;
+
+
+  const membersRef =
+    collection(
+      firebaseDB,
+      'squatGroups',
+      profile.group,
+      'members'
+    );
+
+
+  stopGroupListener =
+    onSnapshot(
+      membersRef,
+      snapshot => {
+
+        let friends = [];
+
+        const myId =
+          getMemberId();
+
+
+        snapshot.forEach(item => {
+
+          if(item.id === myId)
+            return;
+
+
+          const v =
+            item.data();
+
+
+          friends.push({
+
+            name:
+              v.name || '匿名朋友',
+
+            count:
+              Number(
+                v.todayCount || 0
+              ),
+
+            goal:
+              Number(
+                v.goal || 40
+              )
+
+          });
+
+        });
+
+
+        friends.sort(
+          (a,b) =>
+            b.count-a.count
+        );
+
+
+        renderFriends(
+          friends
+        );
+
+      },
+
+      error => {
+
+        console.error(
+          '朋友資料讀取失敗：',
+          error
+        );
+
+
+        const box =
+          document.getElementById(
+            'groupStatus'
+          );
+
+
+        if(box){
+
+          box.innerHTML =
+            '<div class="sub">' +
+            '朋友資料讀取失敗，請確認 Firebase 設定。' +
+            '</div>';
+
+        }
+
+      }
+
+    );
+
+}
+
+
+/* 顯示朋友 */
+
+function renderFriends(
+  friends
+){
+
+  const box =
+    document.getElementById(
+      'groupStatus'
+    );
+
+
+  if(!box)
+    return;
+
+
+  if(!profile.group){
+
+    box.innerHTML =
+      '<div class="sub">' +
+      '尚未加入督促群組' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  let html = '';
+
+
+  html +=
+    '<div class="sub">' +
+    '群組：<b>' +
+    escapeHtml(profile.group) +
+    '</b>' +
+    '</div>';
+
+
+  if(!friends.length){
+
+    html +=
+      '<div class="sub" style="padding:12px 0">' +
+      '目前還沒有其他朋友加入。' +
+      '</div>';
+
+  }else{
+
+    friends.forEach(
+      friend => {
+
+        let pct =
+          Math.min(
+            100,
+            Math.round(
+              friend.count /
+              friend.goal *
+              100
+            )
+          );
+
+
+        html +=
+          '<div class="friendrow">' +
+
+          '<div style="flex:1;margin-right:12px">' +
+
+          '<b>' +
+          escapeHtml(
+            friend.name
+          ) +
+          '</b>' +
+
+          '<div class="progressbar">' +
+          '<i style="width:' +
+          pct +
+          '%"></i>' +
+          '</div>' +
+
+          '</div>' +
+
+          '<b>' +
+          friend.count +
+          '/' +
+          friend.goal +
+
+          (
+            friend.count >=
+            friend.goal
+            ? ' ✅'
+            : ''
+          ) +
+
+          '</b>' +
+
+          '</div>';
+
+      }
+    );
+
+  }
+
+
+  box.innerHTML = html;
+
+}
+
+
+/* 設定頁群組資料 */
+
+function renderGroupSettings(){
+
+  const name =
+    document.getElementById(
+      'friendName'
+    );
+
+  const code =
+    document.getElementById(
+      'groupCode'
+    );
+
+
+  if(name)
+    name.value =
+      profile.name || '';
+
+
+  if(code)
+    code.value =
+      profile.group || '';
+
+
+  const info =
+    document.getElementById(
+      'myGroupInfo'
+    );
+
+
+  if(info){
+
+    if(profile.group){
+
+      info.innerHTML =
+        '<div class="sub" style="margin-top:10px">' +
+        '目前群組' +
+        '</div>' +
+
+        '<div class="groupcode">' +
+        escapeHtml(
+          profile.group
+        ) +
+        '</div>';
+
+    }else{
+
+      info.innerHTML = '';
+
+    }
+
+  }
+
+}
+
+
+/* 啟動 */
+
+async function startApp(){
+
+  render();
+
+  renderGroupSettings();
+
+  await window.firebaseInit;
+
+  if(window.firebaseReady){
+
+    await syncMyProgress();
+
+    await startGroupListener();
+
+  }
+
+}
+
+
+startApp();
+
+
+/* PWA */
+
+if(
+  'serviceWorker'
+  in navigator
+){
+
+  navigator.serviceWorker
+    .register('sw.js')
+    .catch(
+      error =>
+        console.warn(
+          'Service Worker:',
+          error
+        )
+    );
+
+}
 
 </script>
 

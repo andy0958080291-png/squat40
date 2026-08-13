@@ -1,0 +1,21 @@
+{
+  "name": "深蹲40下",
+  "short_name": "深蹲40下",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#ffd83d",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

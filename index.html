@@ -10,80 +10,784 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>深蹲40下</title>
+
 <style>
 :root{--bg:#fffaf0;--card:#fff;--text:#263238;--muted:#7a858b;--yellow:#ffd83d;--orange:#ff9d35;--green:#35c979;--blue:#4b9cff;--red:#ff6673;--shadow:0 8px 28px rgba(38,50,56,.08)}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fff7d6 0,#fffaf0 34%,#f7fbff 100%);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;color:var(--text);min-height:100vh}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#fff7d6 0,#fffaf0 34%,#f7fbff 100%);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;color:var(--text);min-height:100vh}
 .app{max-width:520px;margin:auto;padding:env(safe-area-inset-top) 16px calc(88px + env(safe-area-inset-bottom))}
 header{display:flex;align-items:center;justify-content:space-between;padding:18px 4px 10px}
-.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:14px;box-shadow:0 5px 14px #f0c94355}.brand h1{font-size:22px;margin:0;font-weight:900}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:44px;height:44px;border-radius:14px;box-shadow:0 5px 14px #f0c94355}
+.brand h1{font-size:22px;margin:0;font-weight:900}
+.brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .iconbtn{border:0;background:#fff;border-radius:14px;width:42px;height:42px;font-size:20px;box-shadow:var(--shadow)}
 .hero{background:#fff;border-radius:28px;padding:22px 18px;box-shadow:var(--shadow);text-align:center}
 .ring{width:220px;height:220px;margin:4px auto 14px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--p)*1%),#edf0f2 0);position:relative}
 .ring:after{content:"";position:absolute;inset:15px;background:#fff;border-radius:50%}
-.ringtext{position:relative;z-index:1}.ringtext strong{font-size:48px;line-height:1;font-weight:900}.ringtext span{display:block;color:var(--muted);font-weight:700;margin-top:6px}
-.encourage{font-weight:800;font-size:18px;margin:5px 0 16px}.sub{color:var(--muted);font-size:13px}
-.actions{display:flex;gap:10px}.btn{border:0;border-radius:16px;padding:14px 10px;font-size:17px;font-weight:900;flex:1}.plus1{background:#4b9cff;color:#fff}.plus5{background:#ff9d35;color:#fff}.start{width:100%;margin-top:10px;background:#ffd83d;color:#4b3b00}
-.section{margin-top:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{background:#fff;border-radius:20px;padding:15px;box-shadow:var(--shadow)}.stat b{font-size:25px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-.card{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow)}.row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #eef0f1}.row:last-child{border-bottom:0}.badge{background:#e8fff1;color:#1eaa61;border-radius:10px;padding:5px 8px;font-weight:800;font-size:12px}
-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);background:#ffffffee;backdrop-filter:blur(16px);display:flex;justify-content:space-around;padding:10px 8px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #eee;z-index:20}.navbtn{border:0;background:none;color:#8b9499;font-size:11px;font-weight:800;padding:6px 14px}.navbtn.active{color:#2e9b68}.navbtn div{font-size:21px;margin-bottom:2px}
-.page{display:none}.page.active{display:block}
-.modal{position:fixed;inset:0;background:#0006;display:none;align-items:end;z-index:30}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-width:520px;margin:auto 0 0;border-radius:26px 26px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom));}.sheet h2{margin:0 0 16px}.field{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.field input{width:90px;padding:10px;border:1px solid #ddd;border-radius:10px;font-size:16px;text-align:center}.close{width:100%;border:0;border-radius:15px;padding:13px;background:#eee;font-weight:800}
-.timer{font-size:80px;font-weight:900;text-align:center;margin:30px 0 5px}.countbig{text-align:center;font-size:24px;color:var(--muted)}.timerbtn{display:block;width:100%;border:0;border-radius:18px;padding:17px;background:#ffd83d;font-size:20px;font-weight:900;margin:18px 0 10px}.finish{background:#35c979;color:#fff}.reset{background:#f0f2f3}
+.ringtext{position:relative;z-index:1}
+.ringtext strong{font-size:48px;line-height:1;font-weight:900}
+.ringtext span{display:block;color:var(--muted);font-weight:700;margin-top:6px}
+.encourage{font-weight:800;font-size:18px;margin:5px 0 16px}
+.sub{color:var(--muted);font-size:13px}
+.actions{display:flex;gap:10px}
+.btn{border:0;border-radius:16px;padding:14px 10px;font-size:17px;font-weight:900;flex:1}
+.plus1{background:#4b9cff;color:#fff}
+.plus5{background:#ff9d35;color:#fff}
+.start{width:100%;margin-top:10px;background:#ffd83d;color:#4b3b00}
+.section{margin-top:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:#fff;border-radius:20px;padding:15px;box-shadow:var(--shadow)}
+.stat b{font-size:25px}
+.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.card{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #eef0f1}
+.row:last-child{border-bottom:0}
+.badge{background:#e8fff1;color:#1eaa61;border-radius:10px;padding:5px 8px;font-weight:800;font-size:12px}
+nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);background:#ffffffee;backdrop-filter:blur(16px);display:flex;justify-content:space-around;padding:10px 8px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #eee;z-index:20}
+.navbtn{border:0;background:none;color:#8b9499;font-size:11px;font-weight:800;padding:6px 14px}
+.navbtn.active{color:#2e9b68}
+.navbtn div{font-size:21px;margin-bottom:2px}
+.page{display:none}
+.page.active{display:block}
+.modal{position:fixed;inset:0;background:#0006;display:none;align-items:end;z-index:30}
+.modal.show{display:flex}
+.sheet{background:#fff;width:100%;max-width:520px;margin:auto 0 0;border-radius:26px 26px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom))}
+.sheet h2{margin:0 0 16px}
+.field{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.field input{width:90px;padding:10px;border:1px solid #ddd;border-radius:10px;font-size:16px;text-align:center}
+.close{width:100%;border:0;border-radius:15px;padding:13px;background:#eee;font-weight:800}
+.timer{font-size:80px;font-weight:900;text-align:center;margin:30px 0 5px}
+.countbig{text-align:center;font-size:24px;color:var(--muted)}
+.timerbtn{display:block;width:100%;border:0;border-radius:18px;padding:17px;background:#ffd83d;font-size:20px;font-weight:900;margin:18px 0 10px}
+.finish{background:#35c979;color:#fff}
+.reset{background:#f0f2f3}
 .notice{padding:12px 14px;background:#fff7d6;border-radius:14px;font-size:13px;color:#6f5b00;margin-top:12px}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-<header><div class="brand"><img class="logo" src="icons/icon-192.png" alt="胖馬鈴薯"><div><h1>深蹲40下</h1><small>每天40下，胖馬鈴薯陪你一起完成！🥔</small></div></div><button class="iconbtn" onclick="openSettings()">⚙️</button></header>
+
+<header>
+<div class="brand">
+<img class="logo" src="icons/icon-192.png" alt="胖馬鈴薯">
+<div>
+<h1>深蹲40下</h1>
+<small>每天40下，胖馬鈴薯陪你一起完成！🥔</small>
+</div>
+</div>
+<button class="iconbtn" onclick="openSettings()">⚙️</button>
+</header>
 
 <section id="home" class="page active">
 <div class="hero">
-<div class="ring" id="ring"><div class="ringtext"><strong id="todayCount">0</strong><span>/ <span id="goalText">40</span> 下</span></div></div>
-<div class="encourage" id="encourage">今天還沒開始，加油！💪</div><div class="sub" id="dateText"></div>
-<div class="actions"><button class="btn plus1" onclick="add(1)">＋1</button><button class="btn plus5" onclick="add(5)">＋5</button></div>
-<button class="btn start" onclick="showPage('workout')">▶ 開始深蹲</button>
+
+<div class="ring" id="ring">
+<div class="ringtext">
+<strong id="todayCount">0</strong>
+<span>/ <span id="goalText">40</span> 下</span>
 </div>
-<div class="section grid"><div class="stat"><b id="streak">0</b><span>🔥 連續天數</span></div><div class="stat"><b id="monthDays">0</b><span>📅 本月完成</span></div></div>
-<div class="section card"><b>最近紀錄</b><div id="recent"></div></div>
+</div>
+
+<div class="encourage" id="encourage">今天還沒開始，加油！💪</div>
+<div class="sub" id="dateText"></div>
+
+<div class="actions">
+<button class="btn plus1" onclick="add(1)">＋1</button>
+<button class="btn plus5" onclick="add(5)">＋5</button>
+</div>
+
+<button class="btn start" onclick="showPage('workout')">▶ 開始深蹲</button>
+
+</div>
+
+<div class="section grid">
+<div class="stat">
+<b id="streak">0</b>
+<span>🔥 連續天數</span>
+</div>
+
+<div class="stat">
+<b id="monthDays">0</b>
+<span>📅 本月完成</span>
+</div>
+</div>
+
+<div class="section card">
+<b>最近紀錄</b>
+<div id="recent"></div>
+</div>
+
 </section>
 
 <section id="workout" class="page">
-<div class="card" style="text-align:center"><div class="sub">深蹲進行中</div><div class="timer" id="workoutCount">0</div><div class="countbig">/ <span id="workoutGoal">40</span> 下</div><button class="timerbtn" onclick="workoutAdd()">完成 1 下 💪</button><button class="timerbtn finish" onclick="finishWorkout()">完成今天訓練 🎉</button><button class="timerbtn reset" onclick="showPage('home')">返回</button></div>
+
+<div class="card" style="text-align:center">
+
+<div class="sub">深蹲進行中</div>
+
+<div class="timer" id="workoutCount">0</div>
+
+<div class="countbig">
+/ <span id="workoutGoal">40</span> 下
+</div>
+
+<button class="timerbtn" onclick="workoutAdd()">
+完成 1 下 💪
+</button>
+
+<button class="timerbtn finish" onclick="finishWorkout()">
+完成今天訓練 🎉
+</button>
+
+<button class="timerbtn reset" onclick="showPage('home')">
+返回
+</button>
+
+</div>
+
 </section>
 
-<section id="records" class="page"><div class="card"><h2 style="margin-top:0">📖 深蹲紀錄</h2><div id="allRecords"></div></div></section>
-<section id="stats" class="page"><div class="card"><h2 style="margin-top:0">📊 統計</h2><div class="grid"><div class="stat"><b id="totalCount">0</b><span>累積深蹲</span></div><div class="stat"><b id="bestStreak">0</b><span>最長連續</span></div><div class="stat"><b id="avgCount">0</b><span>平均每日</span></div><div class="stat"><b id="completeRate">0%</b><span>達標率</span></div></div></div></section>
+<section id="records" class="page">
 
-<section id="settings" class="page"><div class="card"><h2 style="margin-top:0">⚙️ 設定</h2><div class="field"><span>每日目標</span><input id="goalInput" type="number" min="1" max="999" onchange="saveGoal()"></div><div class="field"><span>每日提醒</span><input id="timeInput" type="time" onchange="saveReminder()"></div><button class="timerbtn" onclick="requestNotify()">🔔 開啟提醒通知</button><div class="notice">提醒功能需先允許瀏覽器通知。iPhone 建議先把本 App「加入主畫面」。</div></div></section>
+<div class="card">
+
+<h2 style="margin-top:0">📖 深蹲紀錄</h2>
+
+<div id="allRecords"></div>
+
+</div>
+
+</section>
+
+<section id="stats" class="page">
+
+<div class="card">
+
+<h2 style="margin-top:0">📊 統計</h2>
+
+<div class="grid">
+
+<div class="stat">
+<b id="totalCount">0</b>
+<span>累積深蹲</span>
+</div>
+
+<div class="stat">
+<b id="bestStreak">0</b>
+<span>最長連續</span>
+</div>
+
+<div class="stat">
+<b id="avgCount">0</b>
+<span>平均每日</span>
+</div>
+
+<div class="stat">
+<b id="completeRate">0%</b>
+<span>達標率</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="settings" class="page">
+
+<div class="card">
+
+<h2 style="margin-top:0">⚙️ 設定</h2>
+
+<div class="field">
+<span>每日目標</span>
+<input id="goalInput" type="number" min="1" max="999" onchange="saveGoal()">
+</div>
+
+<div class="field">
+<span>每日提醒</span>
+<input id="timeInput" type="time" onchange="saveReminder()">
+</div>
+
+<button class="timerbtn" onclick="requestNotify()">
+🔔 開啟提醒通知
+</button>
+
+<div class="notice">
+提醒功能需先允許瀏覽器通知。iPhone 建議先把本 App「加入主畫面」。
+</div>
+
+</div>
+
+</section>
+
 </div>
 
 <nav>
-<button class="navbtn active" data-page="home" onclick="showPage('home')"><div>🏠</div>首頁</button>
-<button class="navbtn" data-page="records" onclick="showPage('records')"><div>📖</div>紀錄</button>
-<button class="navbtn" data-page="stats" onclick="showPage('stats')"><div>📊</div>統計</button>
-<button class="navbtn" data-page="settings" onclick="showPage('settings')"><div>⚙️</div>設定</button>
+
+<button class="navbtn active" data-page="home" onclick="showPage('home')">
+<div>🏠</div>首頁
+</button>
+
+<button class="navbtn" data-page="records" onclick="showPage('records')">
+<div>📖</div>紀錄
+</button>
+
+<button class="navbtn" data-page="stats" onclick="showPage('stats')">
+<div>📊</div>統計
+</button>
+
+<button class="navbtn" data-page="settings" onclick="showPage('settings')">
+<div>⚙️</div>設定
+</button>
+
 </nav>
 
-<script>
-const KEY='squat40-v3';
-let data=JSON.parse(localStorage.getItem(KEY)||'null')||{goal:40,records:{},reminder:'20:00'};
-let workout=0;
-function todayKey(){return new Date().toISOString().slice(0,10)}
-function fmt(k){let d=new Date(k+'T00:00:00');return `${d.getMonth()+1}/${d.getDate()}（${'日一二三四五六'[d.getDay()]}）`}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
-function add(n){let k=todayKey();data.records[k]=(data.records[k]||0)+n;if(data.records[k]>999)data.records[k]=999;save()}
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='workout'){workout=data.records[todayKey()]||0;document.getElementById('workoutCount').textContent=workout;document.getElementById('workoutGoal').textContent=data.goal}}
-function workoutAdd(){workout++;data.records[todayKey()]=workout;save();document.getElementById('workoutCount').textContent=workout;if(navigator.vibrate)navigator.vibrate(25)}
-function finishWorkout(){if(workout<data.goal){if(!confirm(`目前 ${workout} 下，還差 ${data.goal-workout} 下。確定要結束嗎？`))return}data.records[todayKey()]=workout;save();alert(workout>=data.goal?'🎉 今天完成40下！':'已保存今天的訓練！');showPage('home')}
-function streak(){let s=0,d=new Date();while(true){let k=d.toISOString().slice(0,10);if((data.records[k]||0)>=data.goal){s++;d.setDate(d.getDate()-1)}else break}return s}
-function monthDone(){let now=new Date(),m=now.getMonth(),y=now.getFullYear();return Object.entries(data.records).filter(([k,v])=>{let d=new Date(k+'T00:00:00');return d.getFullYear()===y&&d.getMonth()===m&&v>=data.goal}).length}
-function render(){let k=todayKey(),c=data.records[k]||0,g=data.goal,p=Math.min(100,c/g*100);document.getElementById('todayCount').textContent=c;document.getElementById('goalText').textContent=g;document.getElementById('ring').style.setProperty('--p',p);document.getElementById('streak').textContent=streak();document.getElementById('monthDays').textContent=monthDone();document.getElementById('goalInput').value=g;document.getElementById('timeInput').value=data.reminder;document.getElementById('dateText').textContent=new Date().toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric',weekday:'long'});document.getElementById('encourage').textContent=c>=g?'🎉 今日達標！太棒了！':c?`再 ${g-c} 下，加油！💪`:'今天還沒開始，加油！💪';let keys=Object.keys(data.records).sort().reverse();document.getElementById('recent').innerHTML=keys.slice(0,5).map(k=>`<div class="row"><span>${fmt(k)}</span><b>${data.records[k]} 下 ${data.records[k]>=g?'<span class="badge">達標</span>':''}</b></div>`).join('')||'<div class="sub" style="padding:15px 0">還沒有紀錄</div>';document.getElementById('allRecords').innerHTML=keys.map(k=>`<div class="row"><span>${fmt(k)}</span><b>${data.records[k]} 下 ${data.records[k]>=g?'<span class="badge">✓</span>':''}</b></div>`).join('')||'<div class="sub">還沒有紀錄</div>';let vals=Object.values(data.records),total=vals.reduce((a,b)=>a+b,0),days=vals.length,done=vals.filter(v=>v>=g).length;document.getElementById('totalCount').textContent=total;document.getElementById('bestStreak').textContent=bestStreak();document.getElementById('avgCount').textContent=days?Math.round(total/days):0;document.getElementById('completeRate').textContent=days?Math.round(done/days*100)+'%':'0%'}
-function bestStreak(){let ks=Object.keys(data.records).sort(),best=0,cur=0,prev=null;for(let k of ks){let d=new Date(k+'T00:00:00');if(prev){let diff=(d-prev)/86400000;if(diff!==1)cur=0}if((data.records[k]||0)>=data.goal){cur++;best=Math.max(best,cur)}prev=d}return best}
-function saveGoal(){let v=Math.max(1,Math.min(999,Number(document.getElementById('goalInput').value)||40));data.goal=v;save()}
-function saveReminder(){data.reminder=document.getElementById('timeInput').value||'20:00';save()}
-function openSettings(){showPage('settings')}
-async function requestNotify(){if(!('Notification'in window)){alert('此瀏覽器不支援通知。');return}let p=await Notification.requestPermission();alert(p==='granted'?'🔔 已開啟通知權限！':'目前未允許通知。')}
-if('serviceWorker'in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
-render();
+
+<!-- Firebase -->
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+getAuth,
+signInAnonymously
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+getFirestore
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCBTltVWgg-9kWJ9kTXZknK6UoTg0Cl12Y",
+
+authDomain: "squat40-c8224.firebaseapp.com",
+
+projectId: "squat40-c8224",
+
+storageBucket: "squat40-c8224.firebasestorage.app",
+
+messagingSenderId: "216837667050",
+
+appId: "1:216837667050:web:8acef74f7ebf9b9ff93"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+try {
+
+await signInAnonymously(auth);
+
+console.log(
+"Firebase 匿名登入成功：",
+auth.currentUser?.uid
+);
+
+window.firebaseAuth = auth;
+window.firebaseDB = db;
+
+} catch (error) {
+
+console.error(
+"Firebase 匿名登入失敗：",
+error
+);
+
+}
+
 </script>
-</body></html>
+
+
+<script>
+
+const KEY='squat40-v3';
+
+let data=JSON.parse(
+localStorage.getItem(KEY)||'null'
+)||{
+goal:40,
+records:{},
+reminder:'20:00'
+};
+
+let workout=0;
+
+
+function todayKey(){
+
+return new Date().toISOString().slice(0,10);
+
+}
+
+
+function fmt(k){
+
+let d=new Date(k+'T00:00:00');
+
+return `${d.getMonth()+1}/${d.getDate()}（${'日一二三四五六'[d.getDay()]}）`;
+
+}
+
+
+function save(){
+
+localStorage.setItem(
+KEY,
+JSON.stringify(data)
+);
+
+render();
+
+}
+
+
+function add(n){
+
+let k=todayKey();
+
+data.records[k]=(data.records[k]||0)+n;
+
+if(data.records[k]>999)
+data.records[k]=999;
+
+save();
+
+}
+
+
+function showPage(id){
+
+document.querySelectorAll('.page')
+.forEach(x=>x.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+document.querySelectorAll('.navbtn')
+.forEach(x=>
+x.classList.toggle(
+'active',
+x.dataset.page===id
+)
+);
+
+if(id==='workout'){
+
+workout=data.records[todayKey()]||0;
+
+document.getElementById(
+'workoutCount'
+).textContent=workout;
+
+document.getElementById(
+'workoutGoal'
+).textContent=data.goal;
+
+}
+
+}
+
+
+function workoutAdd(){
+
+workout++;
+
+data.records[todayKey()]=workout;
+
+save();
+
+document.getElementById(
+'workoutCount'
+).textContent=workout;
+
+if(navigator.vibrate)
+navigator.vibrate(25);
+
+}
+
+
+function finishWorkout(){
+
+if(workout<data.goal){
+
+if(!confirm(
+`目前 ${workout} 下，還差 ${data.goal-workout} 下。確定要結束嗎？`
+))
+return;
+
+}
+
+data.records[todayKey()]=workout;
+
+save();
+
+alert(
+workout>=data.goal
+?'🎉 今天完成40下！'
+:'已保存今天的訓練！'
+);
+
+showPage('home');
+
+}
+
+
+function streak(){
+
+let s=0;
+
+let d=new Date();
+
+while(true){
+
+let k=d.toISOString().slice(0,10);
+
+if((data.records[k]||0)>=data.goal){
+
+s++;
+
+d.setDate(
+d.getDate()-1
+);
+
+}else{
+
+break;
+
+}
+
+}
+
+return s;
+
+}
+
+
+function monthDone(){
+
+let now=new Date();
+
+let m=now.getMonth();
+
+let y=now.getFullYear();
+
+return Object.entries(data.records)
+.filter(([k,v])=>{
+
+let d=new Date(k+'T00:00:00');
+
+return
+d.getFullYear()===y &&
+d.getMonth()===m &&
+v>=data.goal;
+
+}).length;
+
+}
+
+
+function render(){
+
+let k=todayKey();
+
+let c=data.records[k]||0;
+
+let g=data.goal;
+
+let p=Math.min(
+100,
+c/g*100
+);
+
+
+document.getElementById(
+'todayCount'
+).textContent=c;
+
+
+document.getElementById(
+'goalText'
+).textContent=g;
+
+
+document.getElementById(
+'ring'
+).style.setProperty(
+'--p',
+p
+);
+
+
+document.getElementById(
+'streak'
+).textContent=streak();
+
+
+document.getElementById(
+'monthDays'
+).textContent=monthDone();
+
+
+document.getElementById(
+'goalInput'
+).value=g;
+
+
+document.getElementById(
+'timeInput'
+).value=data.reminder;
+
+
+document.getElementById(
+'dateText'
+).textContent=
+new Date().toLocaleDateString(
+'zh-TW',
+{
+year:'numeric',
+month:'long',
+day:'numeric',
+weekday:'long'
+}
+);
+
+
+document.getElementById(
+'encourage'
+).textContent=
+c>=g
+?'🎉 今日達標！太棒了！'
+:c
+?`再 ${g-c} 下，加油！💪`
+:'今天還沒開始，加油！💪';
+
+
+let keys=
+Object.keys(data.records)
+.sort()
+.reverse();
+
+
+document.getElementById(
+'recent'
+).innerHTML=
+keys.slice(0,5)
+.map(k=>
+`<div class="row">
+<span>${fmt(k)}</span>
+<b>
+${data.records[k]} 下
+${data.records[k]>=g
+?'<span class="badge">達標</span>'
+:''
+}
+</b>
+</div>`
+)
+.join('')
+||
+'<div class="sub" style="padding:15px 0">還沒有紀錄</div>';
+
+
+document.getElementById(
+'allRecords'
+).innerHTML=
+keys.map(k=>
+`<div class="row">
+<span>${fmt(k)}</span>
+<b>
+${data.records[k]} 下
+${data.records[k]>=g
+?'<span class="badge">✓</span>'
+:''
+}
+</b>
+</div>`
+)
+.join('')
+||
+'<div class="sub">還沒有紀錄</div>';
+
+
+let vals=Object.values(data.records);
+
+let total=
+vals.reduce((a,b)=>a+b,0);
+
+let days=vals.length;
+
+let done=
+vals.filter(v=>v>=g).length;
+
+
+document.getElementById(
+'totalCount'
+).textContent=total;
+
+
+document.getElementById(
+'bestStreak'
+).textContent=bestStreak();
+
+
+document.getElementById(
+'avgCount'
+).textContent=
+days
+?Math.round(total/days)
+:0;
+
+
+document.getElementById(
+'completeRate'
+).textContent=
+days
+?Math.round(done/days*100)+'%'
+:'0%';
+
+}
+
+
+function bestStreak(){
+
+let ks=
+Object.keys(data.records)
+.sort();
+
+let best=0;
+
+let cur=0;
+
+let prev=null;
+
+
+for(let k of ks){
+
+let d=
+new Date(k+'T00:00:00');
+
+if(prev){
+
+let diff=
+(d-prev)/86400000;
+
+if(diff!==1)
+cur=0;
+
+}
+
+if(
+(data.records[k]||0)>=data.goal
+){
+
+cur++;
+
+best=Math.max(
+best,
+cur
+);
+
+}
+
+prev=d;
+
+}
+
+return best;
+
+}
+
+
+function saveGoal(){
+
+let v=Math.max(
+1,
+Math.min(
+999,
+Number(
+document.getElementById(
+'goalInput'
+).value
+)||40
+)
+);
+
+data.goal=v;
+
+save();
+
+}
+
+
+function saveReminder(){
+
+data.reminder=
+document.getElementById(
+'timeInput'
+).value
+||'20:00';
+
+save();
+
+}
+
+
+function openSettings(){
+
+showPage('settings');
+
+}
+
+
+async function requestNotify(){
+
+if(!('Notification'in window)){
+
+alert(
+'此瀏覽器不支援通知。'
+);
+
+return;
+
+}
+
+let p=
+await Notification.requestPermission();
+
+alert(
+p==='granted'
+?'🔔 已開啟通知權限！'
+:'目前未允許通知。'
+);
+
+}
+
+
+if('serviceWorker'in navigator)
+
+navigator.serviceWorker
+.register('sw.js')
+.catch(()=>{});
+
+
+render();
+
+</script>
+
+</body>
+</html>

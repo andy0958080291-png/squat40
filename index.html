@@ -164,6 +164,23 @@ header{
   color:#fff
 }
 
+.adjustrow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px
+}
+
+.minus1{
+  background:#f0f2f3;
+  color:#263238
+}
+
+.zero{
+  background:#ffe5e8;
+  color:#c93d4a
+}
+
 .start{
   width:100%;
   margin-top:10px;
@@ -391,6 +408,54 @@ nav{
   border-bottom:0
 }
 
+.rankrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #eef0f1
+}
+
+.rankrow:last-child{
+  border-bottom:0
+}
+
+.rankmedal{
+  width:38px;
+  min-width:38px;
+  text-align:center;
+  font-size:25px
+}
+
+.ranknum{
+  width:28px;
+  min-width:28px;
+  color:#8b9499;
+  font-weight:900;
+  text-align:center
+}
+
+.rankname{
+  flex:1;
+  min-width:0;
+  font-weight:900;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+.rankcount{
+  font-size:18px;
+  font-weight:900
+}
+
+.rankrow.me{
+  background:#f7fbff;
+  border-radius:14px;
+  padding-left:8px;
+  padding-right:8px
+}
+
 .progressbar{
   height:8px;
   background:#edf0f2;
@@ -446,6 +511,11 @@ nav{
     <div class="actions">
       <button class="btn plus1" onclick="add(1)">＋1</button>
       <button class="btn plus5" onclick="add(5)">＋5</button>
+    </div>
+
+    <div class="adjustrow">
+      <button class="btn minus1" onclick="add(-1)">−1</button>
+      <button class="btn zero" onclick="resetToday()">歸零</button>
     </div>
 
     <button class="btn start" onclick="showPage('workout')">
@@ -521,6 +591,11 @@ nav{
     <button class="timerbtn" onclick="workoutAdd()">
       完成 1 下 💪
     </button>
+
+    <div class="adjustrow">
+      <button class="btn minus1" onclick="workoutAdjust(-1)">−1</button>
+      <button class="btn zero" onclick="workoutAdjust(0)">歸零</button>
+    </div>
 
     <button class="timerbtn finish" onclick="finishWorkout()">
       完成今天訓練 🎉
@@ -948,7 +1023,40 @@ function add(n){
   if(data.records[k] > 999)
     data.records[k] = 999;
 
+  if(data.records[k] < 0)
+    data.records[k] = 0;
+
   save();
+
+}
+
+function resetToday(){
+
+  if(!confirm('確定要把今天的深蹲次數歸零嗎？'))
+    return;
+
+  data.records[todayKey()] = 0;
+  workout = 0;
+  save();
+
+  const el = document.getElementById('workoutCount');
+  if(el) el.textContent = '0';
+
+}
+
+function workoutAdjust(n){
+
+  if(n === 0){
+    resetToday();
+    return;
+  }
+
+  workout = Math.max(0, workout + n);
+  data.records[todayKey()] = workout;
+  save();
+
+  const el = document.getElementById('workoutCount');
+  if(el) el.textContent = workout;
 
 }
 
@@ -1930,10 +2038,8 @@ function renderFriends(
       'groupStatus'
     );
 
-
   if(!box)
     return;
-
 
   if(!profile.group){
 
@@ -1946,73 +2052,67 @@ function renderFriends(
 
   }
 
+  friends.sort(
+    (a,b) =>
+      b.count-a.count ||
+      a.name.localeCompare(b.name)
+  );
 
   let html = '';
 
-
   html +=
-    '<div class="sub">' +
+    '<div class="sub" style="margin-bottom:8px">' +
     '群組：<b>' +
     escapeHtml(profile.group) +
-    '</b>' +
+    '</b>　共 ' +
+    friends.length +
+    ' 人' +
     '</div>';
-
 
   if(!friends.length){
 
     html +=
       '<div class="sub" style="padding:12px 0">' +
-      '目前還沒有其他朋友加入。' +
+      '目前還沒有成員資料。' +
       '</div>';
 
   }else{
 
     friends.forEach(
-      friend => {
+      (friend,index) => {
 
-        let pct =
-          Math.min(
-            100,
-            Math.round(
-              friend.count /
-              friend.goal *
-              100
-            )
-          );
+        const rank = index + 1;
 
+        const medal =
+          rank === 1 ? '🥇' :
+          rank === 2 ? '🥈' :
+          rank === 3 ? '🥉' : '';
+
+        const isMe =
+          friend.id === getMemberId();
 
         html +=
-          '<div class="friendrow">' +
+          '<div class="rankrow' +
+          (isMe ? ' me' : '') +
+          '">' +
 
-          '<div style="flex:1;margin-right:12px">' +
-
-          '<b>' +
-          escapeHtml(
-            friend.name
-          ) +
-          '</b>' +
-
-          '<div class="progressbar">' +
-          '<i style="width:' +
-          pct +
-          '%"></i>' +
+          '<div class="rankmedal">' +
+          medal +
           '</div>' +
 
+          '<div class="ranknum">' +
+          (medal ? '' : rank) +
           '</div>' +
 
-          '<b>' +
+          '<div class="rankname">' +
+          escapeHtml(friend.name) +
+          (isMe ? '（我）' : '') +
+          '</div>' +
+
+          '<div class="rankcount">' +
           friend.count +
-          '/' +
-          friend.goal +
-
-          (
-            friend.count >=
-            friend.goal
-            ? ' ✅'
-            : ''
-          ) +
-
-          '</b>' +
+          ' 下' +
+          '</div>' +
 
           '</div>';
 
@@ -2020,7 +2120,6 @@ function renderFriends(
     );
 
   }
-
 
   box.innerHTML = html;
 
@@ -2128,6 +2227,8 @@ if(
 }
 /* 讓 HTML onclick 可以呼叫 module 裡的函式 */
 window.add = add;
+window.resetToday = resetToday;
+window.workoutAdjust = workoutAdjust;
 window.showPage = showPage;
 window.workoutAdd = workoutAdd;
 window.finishWorkout = finishWorkout;

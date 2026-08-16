@@ -1957,15 +1957,14 @@ async function startGroupListener(){
 
         snapshot.forEach(item => {
 
-          if(item.id === myId)
-            return;
-
-
           const v =
             item.data();
 
 
           friends.push({
+
+            id:
+              item.id,
 
             name:
               v.name || '匿名朋友',
@@ -1985,9 +1984,50 @@ async function startGroupListener(){
         });
 
 
+        /* 一定把自己列入排行榜。
+           Firebase 尚未回傳自己的資料時，
+           直接用目前本機的深蹲次數補上。 */
+
+        const myIndex =
+          friends.findIndex(
+            x => x.id === myId
+          );
+
+        const myRecord = {
+          id: myId,
+
+          name:
+            profile.name || '我',
+
+          count:
+            Number(
+              data.records[todayKey()] || 0
+            ),
+
+          goal:
+            Number(data.goal || 40)
+
+        };
+
+        if(myIndex >= 0){
+
+          friends[myIndex] =
+            {
+              ...friends[myIndex],
+              ...myRecord
+            };
+
+        }else{
+
+          friends.push(myRecord);
+
+        }
+
+
         friends.sort(
           (a,b) =>
-            b.count-a.count
+            b.count-a.count ||
+            a.name.localeCompare(b.name)
         );
 
 
